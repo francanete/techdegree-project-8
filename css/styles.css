@@ -1,11 +1,44 @@
-* {
-    box-sizing: border-box;
-};
 
 
 
+body {
+    background-color:#e8e8e8;
+    margin: auto;
+    padding: 40px;
+    max-width: 1400px;
+}
 
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 2rem;
+}
+
+.card {
+    background-color: rgb(240, 240, 240);
+    display: grid;
+    grid-template-columns: 33% 66%;
+    grid-gap: 10px;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+    padding: 5px;
+    align-items: center;
+}
 
 .avatar{
+    display: block;
+    max-width: 80%;
+    min-width: 60%;
     border-radius: 50%;
+    height: auto;
+    margin: 10px 20px;
+}
+
+.tex-container{
+    display: block;
+}
+
+.name{
+    font-size: 1.2rem;
 }
