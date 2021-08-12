@@ -1,15 +1,29 @@
+* {
+    box-sizing: border-box;
+}
 
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
 body {
+    position: relative;
     background-color:#e8e8e8;
     margin: auto;
     padding: 40px;
     max-width: 1400px;
+    font-family: 'Roboto', sans-serif;
 }
 
+header {
+    display: flex;
+    flex-flow: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 0;
+}
+  
 
-.grid-container{
+.grid-container{ 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 2rem;
@@ -27,18 +41,104 @@ body {
 }
 
 .avatar{
-    display: block;
-    max-width: 80%;
-    min-width: 60%;
+    /* display: block; */
+    max-width: 75%;
     border-radius: 50%;
     height: auto;
-    margin: 10px 20px;
+    margin: 15px 20px;
 }
 
 .tex-container{
     display: block;
+    font-weight: 100;
 }
+
+.text-container p {
+    font-weight: 100;
+    line-height: .8
+}
+
+.title{
+    font-size: 1.4rem;
+    color: rgb(85, 85, 85);
+    margin-right: auto;
+}
+
 
 .name{
     font-size: 1.2rem;
+    font-weight: 400;
+}
+
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(100, 100, 100);
+}
+
+.modal{
+    width: 375px;
+    margin: 15% auto auto;
+    position: relative;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #778;
+    border-radius: 5px;
+    padding: 30px 20px;
+  }
+
+.modal-close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background: rgb(43, 43, 43);
+    border: none;
+    border-radius: 2px;
+    color: rgb(212, 212, 212);
+    font-style: bold;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+
+.student-search {
+    display: block;
+}
+
+.student-search input {
+    width: 100%;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid rgb(170, 170, 170);
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.student-search input::placeholder {
+    color: #929b9e;
+}
+
+/* .student-search button {
+    cursor: pointer;
+    width: 55px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #1e90ff;
+    border-left: none;
+    padding: 0px 5px;
+    font-size: 14px;
+    background-color: #1e90ff;
+    color: #fff;
+} */
+
+.student-search button img {
+    width: 25px;
 }
