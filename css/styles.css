@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+};
+
+
+
+
+
+.avatar{
+    border-radius: 50%;
+}
