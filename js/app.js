@@ -156,14 +156,6 @@ search.addEventListener('keyup', (e) => {
         employee.name.last.toLowerCase().includes(searchName)
          );
       });
-
-    
-    console.log(filteredCharacters);
-    console.log(employees);
     displayEmployees(filteredCharacters);
-
 });
-
-console.log(navigator.language);
-
 
