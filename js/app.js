@@ -166,3 +166,6 @@ search.addEventListener('keyup', (e) => {
 
 });
 
+console.log(navigator.language);
+
+
