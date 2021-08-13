@@ -25,12 +25,11 @@ function storeFetchedEmployees(employeeData) {
 }
 
 
-function displayEmployees() { 
-    // employees = employeeData;
+function displayEmployees(employeeData) { 
 
 let employeeHTML = '';
 
-employees.forEach((employee, index) => {
+employeeData.forEach((employee, index) => {
     let name = employee.name;
     let email = employee.email;
     let city = employee.location.city; 
@@ -101,92 +100,32 @@ gridContainer.addEventListener('click', e => {
     console.log(currentIndex)
 });
 
+
+
 next.addEventListener("click", () => {
-
-    // currentIndex = index++;
-    // displayModal(currentIndex++);
-
-    if (currentIndex > 11){
-        currentIndex = 11;
-        // index = 0;
-        // displayModal(currentIndex)
-        
+    if (currentIndex >= 11){
+        currentIndex = 0;
+        displayModal(currentIndex)
+        // return;        
     } else {
         currentIndex++;
         displayModal(currentIndex);
     }
-    
-
     console.log(currentIndex)
 })
+
+
 
 prev.addEventListener("click", () =>{
-
-    if (currentIndex < 0){
-        currentIndex = -1;
+    if (currentIndex <= 0){
+        currentIndex = 11;
+        displayModal(currentIndex)
+        // return;
     } else {
-        displayModal(currentIndex--);
+        currentIndex--;
+        displayModal(currentIndex);
     }
-
-    
-
-
-
-    // if (currentIndex > -1){
-    //     displayModal(currentIndex--);
-    //     // index = 0;
-    //     // displayModal(currentIndex)
-    // } else {
-    //     currentIndex = index;
-    // }
-
-
-    // currentIndex = index--;
-    // displayModal(currentIndex-1);
-
-    // if (currentIndex <= 0){
-    //     index = 10;
-    //     displayModal(currentIndex)
-    // } 
-
-    console.log(currentIndex)
-
-
-
-    // displayModal(currentIndex--);
-    // if (currentIndex <= 0){
-    //     prev.style.display = "none";
-    // } else if (currentIndex <11){
-    //     prev.style.display = true;
-    // }
-    // console.log(currentIndex)
 })
-
-
-
-
-
-// next.addEventListener("click", () => {
-//     // displayModal(nextModal++);
-//     // } else {
-//     //     displayModal(nextModal++)
-//     // }
-//     if (prevModal === 11){
-//        prevModal = 0; 
-//     } else {
-//         displayModal(nextModal++);
-//     }
-//     displayModal(nextModal++);
-// })
-
-// prev.addEventListener("click", () => {
-//     if (prevModal === 0){
-//         displayModal(prevModal--);
-//     } else {
-//         prevModal = 11;
-//         displayModal(prevModal--) 
-//     }   
-// })
 
 
 modalClose.addEventListener('click', () => {
@@ -209,11 +148,7 @@ function searchPage() {
  }
  searchPage();
 
-
-
- 
 const search = document.getElementById('search');
-
 
 search.addEventListener('keyup', (e) => {
    const searchName = e.target.value.toLowerCase();
