@@ -72,7 +72,7 @@ header {
 
 
 .overlay{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -81,7 +81,7 @@ header {
 }
 
 .modal{
-    width: 375px;
+    width: 420px;
     margin: 15% auto auto;
     position: relative;
     text-align: center;
@@ -107,9 +107,6 @@ header {
 .hidden{
     display: none;
 }
-
-
-
 
 .student-search {
     display: block;
@@ -143,5 +140,14 @@ header {
     width: 25px;
 }
 
+button{
+    background-color: rgb(197, 197, 197);
+    border: none;
+    border-radius: 50%;
 
+}
+
+button:hover{
+    background-color:rgb(123, 167, 175);
+}
   
