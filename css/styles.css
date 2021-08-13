@@ -55,7 +55,7 @@ header {
 
 .text-container p {
     font-weight: 100;
-    line-height: .8
+    line-height: 1;
 }
 
 .title{
@@ -77,7 +77,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(100, 100, 100);
+    background: rgba(100, 100, 100, 0.664);
 }
 
 .modal{

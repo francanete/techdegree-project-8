@@ -15,43 +15,40 @@ let prev = document.getElementById('prev');
 fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
-    .then(displayEmployees)
+    .then(storeFetchedEmployees)
     .catch(err => console.log(err))
 
 
-
-function displayEmployees(employeeData) { 
+function storeFetchedEmployees(employeeData) {
     employees = employeeData;
+    displayEmployees(employeeData);
+}
 
-// store the employee HTML as we create it 
+
+function displayEmployees() { 
+    // employees = employeeData;
+
 let employeeHTML = '';
 
-// loop through each employee and create HTML markup 
 employees.forEach((employee, index) => {
     let name = employee.name;
     let email = employee.email;
     let city = employee.location.city; 
     let picture = employee.picture;
 
-// console.log(employees)
-
-// template literals make this so much cleaner!
-
 employeeHTML += `
 <div class="card" data-index="${index}">
     <img class="avatar" src="${picture.large}" />
     <div class="text-container">
-      <h2 class="name">${name.first} ${name.last}</h2>
-      <p class="email">${email}</p>
-      <p class="address">${city}</p>
+        <h2 class="name">${name.first} ${name.last}</h2>
+        <p class="email">${email}</p>
+        <p class="address">${city}</p>
     </div>
-  </div>
+</div>
 `
 });
   gridContainer.innerHTML = employeeHTML;
 }
-
-
 
 
 function displayModal(index) {
@@ -82,37 +79,114 @@ function displayModal(index) {
 let nextModal;
 let prevModal;
 
+let index;
+let currentIndex;
+
 gridContainer.addEventListener('click', e => {
     // make sure the click is not on the gridContainer itself
     if (e.target !== gridContainer) {
     // select the card element based on its proximity to actual element clicked
     const card = e.target.closest(".card");
-    const index = card.getAttribute('data-index');
+    index = card.getAttribute('data-index');
     nextModal = index;
     prevModal = index;
+    currentIndex = index;
+
+    
     displayModal(index);
+    console.log(index)
+    // return currentIndex;
     }
-    // console.log(next(prevModal))
+    console.log(index)
+    console.log(currentIndex)
 });
 
 next.addEventListener("click", () => {
-    if (nextModal !== 11){
-        displayModal(nextModal++);
+
+    // currentIndex = index++;
+    // displayModal(currentIndex++);
+
+    if (currentIndex > 11){
+        currentIndex = 11;
+        // index = 0;
+        // displayModal(currentIndex)
+        
     } else {
-        displayModal(nextModal++)
-    }    
+        currentIndex++;
+        displayModal(currentIndex);
+    }
+    
+
+    console.log(currentIndex)
 })
 
-prev.addEventListener("click", () => {
-    if (prevModal === 0){
-        displayModal(prevModal--);
+prev.addEventListener("click", () =>{
+
+    if (currentIndex < 0){
+        currentIndex = -1;
     } else {
-        prevModal = 11;
-        displayModal(prevModal--) 
-    }   
+        displayModal(currentIndex--);
+    }
+
+    
+
+
+
+    // if (currentIndex > -1){
+    //     displayModal(currentIndex--);
+    //     // index = 0;
+    //     // displayModal(currentIndex)
+    // } else {
+    //     currentIndex = index;
+    // }
+
+
+    // currentIndex = index--;
+    // displayModal(currentIndex-1);
+
+    // if (currentIndex <= 0){
+    //     index = 10;
+    //     displayModal(currentIndex)
+    // } 
+
+    console.log(currentIndex)
+
+
+
+    // displayModal(currentIndex--);
+    // if (currentIndex <= 0){
+    //     prev.style.display = "none";
+    // } else if (currentIndex <11){
+    //     prev.style.display = true;
+    // }
+    // console.log(currentIndex)
 })
 
 
+
+
+
+// next.addEventListener("click", () => {
+//     // displayModal(nextModal++);
+//     // } else {
+//     //     displayModal(nextModal++)
+//     // }
+//     if (prevModal === 11){
+//        prevModal = 0; 
+//     } else {
+//         displayModal(nextModal++);
+//     }
+//     displayModal(nextModal++);
+// })
+
+// prev.addEventListener("click", () => {
+//     if (prevModal === 0){
+//         displayModal(prevModal--);
+//     } else {
+//         prevModal = 11;
+//         displayModal(prevModal--) 
+//     }   
+// })
 
 
 modalClose.addEventListener('click', () => {
@@ -140,16 +214,20 @@ function searchPage() {
  
 const search = document.getElementById('search');
 
+
 search.addEventListener('keyup', (e) => {
    const searchName = e.target.value.toLowerCase();
    const filteredCharacters = employees.filter((employee) => {
       return (
-         employee.name.first.toLowerCase().includes(searchName) ||
-         employee.name.last.toLowerCase().includes(searchName)
+        employee.name.first.toLowerCase().includes(searchName) ||
+        employee.name.last.toLowerCase().includes(searchName)
          );
       });
-      displayEmployees(filteredCharacters);
-      console.log(filteredCharacters);
-      console.log(employees);
+
+    
+    console.log(filteredCharacters);
+    console.log(employees);
+    displayEmployees(filteredCharacters);
+
 });
 
