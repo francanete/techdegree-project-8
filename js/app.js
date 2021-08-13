@@ -65,14 +65,12 @@ function displayModal(index) {
             <hr />
             <p>${phone}</p>
             <p class="address">${street.number} ${street.name}, ${city}, ${state} ${postcode}</p>
-            <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+            <p>Birthday: ${Intl.DateTimeFormat(navigator.language).format(date)}</p>
         </div>
     `;
     overlay.classList.remove("hidden");
         modalContainer.innerHTML = modalHTML;
 }
-
-
 
 
 let nextModal;
